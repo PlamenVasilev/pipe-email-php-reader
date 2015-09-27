@@ -1,41 +1,18 @@
 # pipe-email-php-reader
-Piping Incoming Mail with PHP.
+Piping incoming mail and attachments with PHP.
 
-/**
-* @license GNU GENERAL PUBLIC LICENSE version 2
-* @package pipe-email-php-reader
-* @author Ivan Ivanov
-* @copyright 2015 http://wwork.eu/
-*/
-
-/**
-* @DB
-*/
+@author Ivan Ivanov
+@copyright 2015 http://wwork.eu/
 
 
-CREATE TABLE IF NOT EXISTS `emails` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `from` varchar(250) NOT NULL,
-  `domain` varchar(255) NOT NULL,
-  `subject` varchar(255) NOT NULL,
-  `body` text NOT NULL,
-  `spf` tinyint(1) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  KEY `from` (`from`),
-  KEY `domain` (`domain`),
-  KEY `subject` (`subject`),
-  KEY `spf` (`spf`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=31 ;
+Requirements
 
+You will need mimeDecode.php from http://pear.php.net/package/Mail_mimeDecode/
 
-CREATE TABLE IF NOT EXISTS `files_content` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `email_id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL DEFAULT 'Untitled.txt',
-  `mime` varchar(50) NOT NULL DEFAULT 'text/plain',
-  `size` int(20) unsigned NOT NULL DEFAULT '0',
-  `data` mediumblob NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `email_id` (`email_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=35 ;
+Setup
+
+Configure your mail server to pipe emails to this script. See http://stuporglue.org/add-an-email-address-that-forwards-to-a-script/ for instructions.
+
+Make this script executable, and edit the configuration options to suit your needs. Change permissions of the directories so that the user executing the script (probably the mail user).
+
+Setup DB settings in config.php
