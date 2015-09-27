@@ -11,7 +11,7 @@ You will need mimeDecode.php from http://pear.php.net/package/Mail_mimeDecode/
 
 Setup
 
-Configure your mail server to pipe emails to this script. See http://stuporglue.org/add-an-email-address-that-forwards-to-a-script/ for instructions.
+Configure your mail server to pipe emails to this script.
 
 Make this script executable, and edit the configuration options to suit your needs. Change permissions of the directories so that the user executing the script (probably the mail user).
 
